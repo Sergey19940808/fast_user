@@ -1,0 +1,2 @@
+class IClient:
+    pass

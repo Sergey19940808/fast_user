@@ -1,0 +1,33 @@
+version: "3"
+services:
+  fast_user_api:
+    build: .
+    command: bash -c "sh ./scripts_sh/setup_fast_user_app.sh &&
+                      python /code/api/server/server.py"
+    env_file:
+      - .env
+    container_name: fast_user_api
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/code
+    depends_on:
+      - fast_user_db
+    restart: always
+
+  fast_user_db:
+    image: mongo:latest
+    container_name: fast_user_db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_INITDB_DATABASE
+      - MONGO_DATABASE
+      - MONGO_USER
+      - MONGO_PASSWORD
+    volumes:
+      - ./scripts_js/init_mongodb.js:/docker-entrypoint-initdb.d/init_mongodb.js:ro
+      - ./mongo-db:/data/db
+    ports:
+      - '27017:27017'
+    restart: always
