@@ -1,3 +1,6 @@
+"""
+This module for declaration model for user
+"""
 from sanic_motor import BaseModel
 
 

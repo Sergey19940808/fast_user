@@ -2,8 +2,7 @@ version: "3"
 services:
   fast_user_api:
     build: .
-    command: bash -c "sh ./scripts_sh/setup_fast_user_app.sh &&
-                      python /code/api/server/server.py"
+    command: bash -c "sh ./scripts_sh/setup_fast_user_app.sh && python /code/api/server/server.py"
     env_file:
       - .env
     container_name: fast_user_api

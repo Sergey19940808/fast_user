@@ -1,3 +1,4 @@
+// This module for init mongodb store
 db.createUser(
     {
         user: "fast_user",
