@@ -29,7 +29,7 @@ class App:
 
     def create_app(self) -> None:
         """
-        Method for creating instance of app user
+        Method for creating instance of app
         """
         # Init application for user
         app = Sanic('user', log_config=LogConfig.LOGGING)
