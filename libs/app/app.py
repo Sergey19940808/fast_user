@@ -1,6 +1,8 @@
 """
-This module for declaration a class for init instance of app
+This module for declaration a class App
 """
+from dataclasses import dataclass
+
 from sanic import Sanic
 from sanic_motor import BaseModel
 
@@ -9,19 +11,15 @@ from config.api_config import ApiConfig
 from config.log_config import LogConfig
 
 
+@dataclass
 class App:
-    def __init__(self):
-        """
-
-        """
-        self.app = None
-        self.create_app()
+    app: Sanic = None
 
     def __call__(self):
         """
-
-        :return:
+        Method doing class App as a function
         """
+        self.create_app()
         self.app.run(
             host=self.app.config.get('HOST'),
             port=self.app.config.get('PORT'),
@@ -29,23 +27,45 @@ class App:
             access_log=self.app.config.get('ACCESS_LOG'),
         )
 
-    def create_app(self):
+    def create_app(self) -> None:
         """
         Method for creating instance of app user
-        :return:
         """
         # Init application for user
         app = Sanic('user', log_config=LogConfig.LOGGING)
 
         # Load the settings
-        app.config.from_object(ApiConfig)
+        app = self.add_config(app)
 
         # Init mongodb
-        BaseModel.init_app(app)
+        app = self.add_db(app)
 
         # Init route for application for user
-        route = Route()
-        route.add_routes(app)
+        app = self.add_routes(app)
 
         self.app = app
+
+    @staticmethod
+    def add_config(app: Sanic) -> Sanic:
+        """
+        Method for adding config in the instance of app
+        """
+        app.config.from_object(ApiConfig)
+        return app
+
+    @staticmethod
+    def add_db(app: Sanic) -> Sanic:
+        """
+        Method for adding db in the instance of app
+        """
+        BaseModel.init_app(app)
+        return app
+
+    @staticmethod
+    def add_routes(app: Sanic) -> Sanic:
+        """
+        Method for adding routes in the instance of app
+        """
+        Route(app)()
+        return app
 

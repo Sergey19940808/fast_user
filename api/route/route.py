@@ -1,9 +1,26 @@
 """
 This module for declaration routes
 """
+from dataclasses import dataclass
+from typing import Any
+
+from sanic import Sanic
+
 from api.resource.resource import UserResource
 
 
+@dataclass
 class Route:
-    def add_routes(self, app):
+    app: Sanic
+
+    def __call__(self, *args: tuple, **kwargs: dict) -> Any:
+        """
+         Method doing class Route as a function
+        """
+        return self.add_routes(self.app)
+
+    def add_routes(self, app: Sanic) -> Any:
+        """
+        Method for adding routes
+        """
         app.add_route(UserResource.as_view(), '/')
