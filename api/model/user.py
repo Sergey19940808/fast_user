@@ -1,5 +1,5 @@
 """
-This module for declaration model for user
+This module for declaration models
 """
 from sanic_motor import BaseModel
 

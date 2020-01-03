@@ -1,5 +1,5 @@
 """
-This module for declaration routes for user of resource
+This module for declaration routes
 """
 from api.resource.resource import UserResource
 

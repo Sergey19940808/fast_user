@@ -1,5 +1,5 @@
 """
-This module for declaration config api for app user
+This module for declaration config api
 """
 import os
 import dotenv
@@ -15,4 +15,4 @@ class ApiConfig:
     ACCESS_LOG = True if os.environ.get('ACCESS_LOG') == 'True' else False
 
     LOGO = os.environ.get('LOGO')
-    MOTOR_URI = os.environ.get('MONGO_URI')
+    MOTOR_URI = os.environ.get('MOTOR_URI')

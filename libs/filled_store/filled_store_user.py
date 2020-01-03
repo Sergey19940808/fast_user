@@ -1,8 +1,7 @@
 """
-This module for declaration filled store user app user
+This module for declaration filled store user
 """
 import uuid
-import pymongo
 
 
 class FilledStoreUser:

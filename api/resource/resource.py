@@ -1,5 +1,5 @@
 """
-This module for declaration resources app user
+This module for declaration resources
 """
 from sanic.views import HTTPMethodView
 from sanic.response import json

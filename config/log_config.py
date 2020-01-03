@@ -1,5 +1,5 @@
 """
-This module for declaration config logging for app user
+This module for declaration config logging
 """
 from config.api_config import ApiConfig
 
