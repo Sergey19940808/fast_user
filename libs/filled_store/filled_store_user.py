@@ -1,12 +1,13 @@
 """
-This module for declaration filled store user
+This module for declaration of class FilledStoreUser
 """
 import uuid
+from dataclasses import dataclass
 
 
+@dataclass
 class FilledStoreUser:
-    def __init__(self, cnt_user):
-        self.cnt_user = cnt_user
+    cnt_user: int = 1000
 
     def filled(self):
         """

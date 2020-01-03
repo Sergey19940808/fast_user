@@ -3,17 +3,15 @@ This module for declaration decorators for dependency injection
 """
 
 
-def push_provide(*args, **kwargs):
+def push_provide(*args: tuple, **kwargs: dict) -> None:
     """
 
-    :return:
     """
     pass
 
 
-def pull_provide(*args, **kwargs):
+def pull_provide(*args: tuple, **kwargs: dict) -> None:
     """
 
-    :return:
     """
     pass
