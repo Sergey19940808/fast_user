@@ -12,9 +12,10 @@ logger = getLogger('sanic.root')
 
 
 class UserResource(HTTPMethodView):
-    async def get(self, request: Request) -> HTTPResponse:
+    def get(self, request: Request) -> HTTPResponse:
         """
         Resource for get all users
         :return:
         """
+        r = request
         return json({'name': 'Sergey'})

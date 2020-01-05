@@ -3,16 +3,14 @@ This module for declaration a class App
 """
 from dataclasses import dataclass
 
-from sanic import Sanic
-from sanic_motor import BaseModel
+from libs.app.interface import IApp
 
-from api.route.route import Route
-from config.api_config import ApiConfig
-from config.log_config import LogConfig
+from libs.app.base import BaseApp
+from sanic import Sanic
 
 
 @dataclass
-class App:
+class App(BaseApp, IApp):
     app: Sanic = None
 
     def __call__(self):
@@ -20,6 +18,8 @@ class App:
         Method doing class App as a function
         """
         self.create_app()
+        # https://github.com/Relrin/sanic-mongodb-extension
+        # Connecting ODM
         self.app.run(
             host=self.app.config.get('HOST'),
             port=self.app.config.get('PORT'),
@@ -32,7 +32,7 @@ class App:
         Method for creating instance of app
         """
         # Init application for user
-        app = Sanic('user', log_config=LogConfig.LOGGING)
+        app = Sanic('user')
 
         # Load the settings
         app = self.add_config(app)
@@ -44,28 +44,4 @@ class App:
         app = self.add_routes(app)
 
         self.app = app
-
-    @staticmethod
-    def add_config(app: Sanic) -> Sanic:
-        """
-        Method for adding config in the instance of app
-        """
-        app.config.from_object(ApiConfig)
-        return app
-
-    @staticmethod
-    def add_db(app: Sanic) -> Sanic:
-        """
-        Method for adding db in the instance of app
-        """
-        BaseModel.init_app(app)
-        return app
-
-    @staticmethod
-    def add_routes(app: Sanic) -> Sanic:
-        """
-        Method for adding routes in the instance of app
-        """
-        Route(app)()
-        return app
 

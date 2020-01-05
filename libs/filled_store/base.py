@@ -1,12 +1,10 @@
 """
 This module for declaration of class BaseFilledStoreUser
 """
-from store.base import BaseStore
-
-from libs.filled_store.interface import IFilledStore
+from libs.store.base import BaseStore
 
 
-class BaseFilledStore(IFilledStore):
+class BaseFilledStore:
     def filled(self, store: BaseStore) -> None:
         """
         Base method for filled of store

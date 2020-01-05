@@ -4,7 +4,7 @@ This module for declaration of interface Store
 from abc import ABCMeta, abstractmethod
 
 
-class IStore(ABCMeta):
+class IStore(metaclass=ABCMeta):
     @abstractmethod
     def get(self) -> None:
         """
