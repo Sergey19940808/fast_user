@@ -2,11 +2,13 @@
 This module for declaration a class App
 """
 from dataclasses import dataclass
+from sanic import Sanic
 
 from libs.app.interface import IApp
 
 from libs.app.base import BaseApp
-from sanic import Sanic
+from config.api_config import ApiConfig
+from config.log_config import LogConfig
 
 
 @dataclass
@@ -32,7 +34,8 @@ class App(BaseApp, IApp):
         Method for creating instance of app
         """
         # Init application for user
-        app = Sanic('user')
+        is_prod = ApiConfig.MODE_PROD
+        app = Sanic('user', log_config=LogConfig.LOGGING) if is_prod else Sanic('user')
 
         # Load the settings
         app = self.add_config(app)

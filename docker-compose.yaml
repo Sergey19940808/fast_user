@@ -1,4 +1,4 @@
-version: "3"
+version: "3.6"
 services:
   fast_user_api:
     build: .
@@ -7,7 +7,7 @@ services:
       - .env.dev
     container_name: fast_user_api
     ports:
-      - '8000:8000'
+      - "8000:8000"
     volumes:
       - .:/code
     depends_on:
@@ -28,5 +28,5 @@ services:
       - ./scripts/scripts_set_app/init_mongodb.js:/docker-entrypoint-initdb.d/init_mongodb.js:ro
       - ./mongo-db:/data/db
     ports:
-      - '27017:27017'
+      - "27017:27017"
     restart: always

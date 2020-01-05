@@ -17,5 +17,4 @@ class UserResource(HTTPMethodView):
         Resource for get all users
         :return:
         """
-        r = request
         return json({'name': 'Sergey'})
