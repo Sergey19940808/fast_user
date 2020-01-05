@@ -20,8 +20,6 @@ class App(BaseApp, IApp):
         Method doing class App as a function
         """
         self.create_app()
-        # https://github.com/Relrin/sanic-mongodb-extension
-        # Connecting ODM
         self.app.run(
             host=self.app.config.get('HOST'),
             port=self.app.config.get('PORT'),
@@ -34,8 +32,7 @@ class App(BaseApp, IApp):
         Method for creating instance of app
         """
         # Init application for user
-        is_prod = ApiConfig.MODE_PROD
-        app = Sanic('user', log_config=LogConfig.LOGGING) if is_prod else Sanic('user')
+        app = self.init_app('user')
 
         # Load the settings
         app = self.add_config(app)

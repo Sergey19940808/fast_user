@@ -3,6 +3,7 @@ This module for declaration a class BaseApp
 """
 from dataclasses import dataclass
 
+from config.log_config import LogConfig
 from sanic import Sanic
 from sanic_motor import BaseModel
 
@@ -13,6 +14,13 @@ from config.api_config import ApiConfig
 @dataclass
 class BaseApp:
     app: None
+
+    @staticmethod
+    def init_app(name_app: str) -> Sanic:
+        """
+        Method for a initialization of app
+        """
+        return Sanic(name_app, log_config=LogConfig.LOGGING) if ApiConfig.MODE_PROD else Sanic('user')
 
     @staticmethod
     def add_config(app: Sanic) -> Sanic:
