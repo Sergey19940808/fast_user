@@ -4,6 +4,8 @@ This module for declaration config api
 import os
 import dotenv
 
+from umongo import MotorAsyncIOInstance
+
 
 class ApiConfig:
     BASE_DIR = os.path.dirname(os.path.dirname((os.path.abspath(__file__))))
@@ -15,4 +17,13 @@ class ApiConfig:
     DEBUG = True if os.environ.get('DEBUG') == 'True' else False
     ACCESS_LOG = True if os.environ.get('ACCESS_LOG') == 'True' else False
 
-    MOTOR_URI = os.environ.get('MOTOR_URI')
+    MONGODB_DATABASE = os.environ.get('MONGO_DATABASE')
+    MONGODB_URI = os.environ.get('MONGO_URI')
+    # You can also specify custom connection options.
+    # For more details check the official docs:
+    # https://api.mongodb.com/python/3.7.0/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
+    MONGODB_CONNECT_OPTIONS = {
+        'minPoolSize': 10,
+        'maxPoolSize': 50,
+    }
+    LAZY_UMONGO = MotorAsyncIOInstance()

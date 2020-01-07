@@ -2,12 +2,12 @@
 This module for declaration a class BaseApp
 """
 from dataclasses import dataclass
+from sanic_mongodb_ext import MongoDbExtension
 
 from config.log_config import LogConfig
 from sanic import Sanic
-from sanic_motor import BaseModel
 
-from api.route.route import Route
+from api.route.user import Route
 from config.api_config import ApiConfig
 
 
@@ -35,7 +35,7 @@ class BaseApp:
         """
         Method for adding db in the instance of app
         """
-        BaseModel.init_app(app)
+        MongoDbExtension(app)
         return app
 
     @staticmethod

@@ -10,5 +10,5 @@
         4) Второй случай:  > .env | cat .env.prod > .env
         5) Будет создан файл .env который заполнится нужными переменными
     4. docker-compose up -d --build fast_api_user
-    5. sh ./scripts/scripts_set_app/setup_fast_user_app.sh
+    5. sh ./libs/scripts/scripts_set_app/setup_fast_user_app.sh
     6. Открываем в браузере localhost:8000/

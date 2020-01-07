@@ -7,8 +7,6 @@ from sanic import Sanic
 from libs.app.interface import IApp
 
 from libs.app.base import BaseApp
-from config.api_config import ApiConfig
-from config.log_config import LogConfig
 
 
 @dataclass

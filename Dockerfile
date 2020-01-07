@@ -20,4 +20,4 @@ COPY . /
 
 WORKDIR /code
 
-CMD python /code/server/server.py
+CMD python /code/libs/server/server.py

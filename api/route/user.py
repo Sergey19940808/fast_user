@@ -6,7 +6,7 @@ from typing import Any
 
 from sanic import Sanic
 
-from api.resource.resource import UserResource
+from api.resource.user import UserResource
 
 
 @dataclass

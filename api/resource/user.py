@@ -1,6 +1,7 @@
 """
 This module for declaration resources
 """
+from api.model.user import User
 from sanic.request import Request
 from sanic.views import HTTPMethodView
 from sanic.response import json, HTTPResponse
@@ -17,4 +18,4 @@ class UserResource(HTTPMethodView):
         Resource for get all users
         :return:
         """
-        return json({'name': 'Sergey'})
+        return json(next(User.find_one()))

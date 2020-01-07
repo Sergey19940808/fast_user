@@ -1,9 +1,14 @@
 """
 This module for declaration models
 """
-from sanic_motor import BaseModel
+from umongo import Document
+from umongo.fields import StringField
+
+from libs.db.client import instance, db
 
 
-class User(BaseModel):
-    __coll__ = 'users'
-    __unique_fields__ = ['name', 'email']
+@instance.register
+class User(Document):
+    name = StringField(required=True, allow_none=False)
+    email = StringField(required=False, allow_none=True)
+    phone = StringField(required=False, allow_none=True)
