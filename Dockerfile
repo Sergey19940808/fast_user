@@ -12,10 +12,12 @@ ENV PYTHONPATH /code
 COPY ./pyproject.toml /
 
 RUN pip install --upgrade pip && \
-    pip install poetry
-
-RUN poetry config virtualenvs.create false --local && poetry install
+    pip install poetry && \
+    poetry config virtualenvs.create false --local && \
+    poetry install
 
 COPY . /
 
 WORKDIR /code
+
+CMD python /code/server/server.py

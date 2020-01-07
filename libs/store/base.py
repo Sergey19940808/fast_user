@@ -1,9 +1,13 @@
 """
 This module for declaration of class Base Store
 """
+from dataclasses import dataclass
 
 
+@dataclass
 class BaseStore:
+    collection: None
+
     def get(self) -> None:
         """
         Abstract method for getting document of collection
