@@ -24,7 +24,6 @@ services:
       - MONGO_USER
       - MONGO_PASSWORD
     volumes:
-      - ./libs/scripts/scripts_set_app/init_mongodb.js:/docker-entrypoint-initdb.d/init_mongodb.js:ro
       - ./mongo-db:/data/db
     ports:
       - "27017:27017"

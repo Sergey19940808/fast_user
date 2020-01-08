@@ -2,32 +2,33 @@
 This module for declaration of class Base Store
 """
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
 class BaseStore:
     collection: None
 
-    def get(self) -> None:
+    def find(self) -> None:
         """
-        Abstract method for getting document of collection
+        Base method for finding all elements of collection
         """
-        pass
+        return self.collection.find()
 
-    def filter(self) -> None:
+    def find_one(self, **kwargs: dict) -> None:
         """
-        Abstract method for filtering of collection
+        Base method for finding single element of collection
         """
-        pass
+        return self.collection.find_one(**kwargs)
 
-    def insert_one(self) -> None:
+    def insert_one(self, obj: Any) -> None:
         """
-        Abstract method for inserting of one document
+        Base method for inserting of one document
         """
-        pass
+        return self.collection.insert_one(obj)
 
-    def insert_many(self) -> None:
+    def insert_many(self, objs: [Any]) -> None:
         """
-        Abstract method for inserting of many document
+        Base method for inserting of many document
         """
-        pass
+        return self.collection.insert_many(objs)

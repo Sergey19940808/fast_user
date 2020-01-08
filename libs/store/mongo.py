@@ -11,4 +11,4 @@ from libs.store.interface import IStore
 
 @dataclass
 class MongoStore(BaseStore, IStore):
-    collection: User
+    collection: User = User()

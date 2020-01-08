@@ -38,8 +38,11 @@ class App(BaseApp, IApp):
         # Init mongodb
         app = self.add_db(app)
 
-        # Init route for application for user
+        # Init routes for application
         app = self.add_routes(app)
+
+        # Init blueprints for application
+        app = self.add_blueprints(app)
 
         self.app = app
 

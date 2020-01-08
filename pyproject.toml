@@ -8,7 +8,8 @@ authors = ["Sergey Alekseev <alekseyserzh88@gmail.com>"]
 python = "3.7.2"
 sanic = "19.9.0"
 python-dotenv = "0.10.3"
-sanic-mongodb-extension = "0.4.0"
+sanic-motor = "0.3.4"
+sanic-openapi = "0.6.0"
 
 [tool.poetry.dev-dependencies]
 
