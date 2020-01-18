@@ -8,7 +8,7 @@ from sanic_openapi import swagger_blueprint
 from config.log_config import LogConfig
 from sanic import Sanic
 
-from api.route.user import Route
+from api.routes.user import Route
 from config.api_config import ApiConfig
 
 

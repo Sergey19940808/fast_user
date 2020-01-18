@@ -19,5 +19,3 @@ RUN pip install --upgrade pip && \
 COPY . /
 
 WORKDIR /code
-
-CMD python /code/libs/server/server.py

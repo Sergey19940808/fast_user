@@ -4,9 +4,9 @@ This module for declaration a class App
 from dataclasses import dataclass
 from sanic import Sanic
 
-from libs.app.interface import IApp
+from api.libs.app.interface import IApp
 
-from libs.app.base import BaseApp
+from api.libs.app.base import BaseApp
 
 
 @dataclass

@@ -9,8 +9,8 @@ from sanic_openapi import doc
 
 from logging import getLogger
 
-from api.model.user import User
-from api.schema.user import User
+from api.models.user import UserModel
+from api.definitions.user import UserDefinition
 
 logger = getLogger('sanic.root')
 
@@ -19,11 +19,16 @@ class UserResource(HTTPMethodView):
     @doc.tag('users')
     @doc.summary('Fetch all users')
     @doc.description('Resource for fetch all users')
-    @doc.produces(doc.List(User), content_type='application/json')
+    @doc.produces(doc.List(UserDefinition), content_type='application/json')
     async def get(self, request: Request) -> HTTPResponse:
         """
         Resource for get all users
-        :return:
         """
-        data = await User.find(sort='name asc')
-        return json(data)
+        cur = await UserModel.find(sort='name')
+        list_users = []
+        for obj in cur.objects:
+            dict_user = {}
+            for key in ['name', 'email', 'phone']:
+                dict_user.update({key: getattr(obj, key)})
+            list_users.append(dict_user)
+        return json(list_users)

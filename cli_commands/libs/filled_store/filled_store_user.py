@@ -4,15 +4,13 @@ This module for declaration of class FilledStoreUser
 import uuid
 from dataclasses import dataclass
 
-from libs.filled_store.interface import IFilledStore
+from cli_commands.libs.store.mongo import MongoStore
 
-from libs.store.mongo import MongoStore
-
-from libs.filled_store.base import BaseFilledStore
+from cli_commands.libs.filled_store.base import BaseFilledStore
 
 
 @dataclass
-class FilledStoreUser(BaseFilledStore, IFilledStore):
+class FilledStoreUser(BaseFilledStore):
     cnt_user: int = 1000
     store: MongoStore = MongoStore()
 
