@@ -2,7 +2,7 @@ version: "3.6"
 services:
   fast_user_api:
     build: .
-    command: bash -c "sh /code/scripts/scripts_set_app/setup_app.sh && python /code/api/libs/server/server.py"
+    command: bash -c "sh /code/scripts/scripts_set_app/setup_app.sh && python /code/libs/server/server.py"
     env_file:
       - .env
     container_name: fast_user_api
@@ -12,6 +12,8 @@ services:
       - .:/code
     depends_on:
       - fast_user_db
+    networks:
+      - default
     restart: always
 
   fast_user_db:
@@ -25,7 +27,16 @@ services:
       - MONGO_USER
       - MONGO_PASSWORD
     volumes:
-      - ./mongo-db:/data/db
+      - mongo-db:/data/db
     ports:
       - "27017:27017"
+    networks:
+      - default
     restart: always
+
+
+volumes:
+  mongo-db: {}
+
+networks:
+  default:

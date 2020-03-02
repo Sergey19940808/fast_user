@@ -9,5 +9,5 @@
         1) Первый случай, выполнить комманду:  sh > .env | cat .env.dev > .env
         2) Второй случай, выполнить комманду:  sh > .env | cat .env.prod > .env
         Будет создан файл .env который заполнится нужными переменными
-    4. docker-compose up -d --build fast_api_user
+    4. docker-compose up -d --build fast_user_api
     5. Открываем в браузере localhost:8000/

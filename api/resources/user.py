@@ -7,12 +7,8 @@ from sanic.response import json, HTTPResponse
 
 from sanic_openapi import doc
 
-from logging import getLogger
-
 from api.models.user import UserModel
 from api.definitions.user import UserDefinition
-
-logger = getLogger('sanic.root')
 
 
 class UserResource(HTTPMethodView):

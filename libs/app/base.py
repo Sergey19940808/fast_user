@@ -1,18 +1,16 @@
 """
 This module for declaration a class BaseApp
 """
-from dataclasses import dataclass
 from sanic_motor import BaseModel
 from sanic_openapi import swagger_blueprint
 
 from config.log_config import LogConfig
 from sanic import Sanic
 
-from api.routes.user import Route
+from libs.routes.user import Route
 from config.api_config import ApiConfig
 
 
-@dataclass
 class BaseApp:
     app: None
 

@@ -1,7 +1,6 @@
 """
 This module for declaration routes
 """
-from dataclasses import dataclass
 from typing import Any
 
 from sanic import Sanic
@@ -9,9 +8,9 @@ from sanic import Sanic
 from api.resources.user import UserResource
 
 
-@dataclass
 class Route:
-    app: Sanic
+    def __init__(self, app):
+        self.app = app
 
     def __call__(self, *args: tuple, **kwargs: dict) -> Any:
         """

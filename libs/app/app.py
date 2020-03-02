@@ -1,16 +1,12 @@
 """
 This module for declaration a class App
 """
-from dataclasses import dataclass
 from sanic import Sanic
 
-from api.libs.app.interface import IApp
-
-from api.libs.app.base import BaseApp
+from libs.app.base import BaseApp
 
 
-@dataclass
-class App(BaseApp, IApp):
+class App(BaseApp):
     app: Sanic = None
 
     def __call__(self):

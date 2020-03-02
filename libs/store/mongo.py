@@ -1,14 +1,11 @@
 """
 This module for declaration of class Mongo Store
 """
-from dataclasses import dataclass
-
-from api.model.user import User
+from api.models.user import UserModel
 
 from libs.store.base import BaseStore
-from libs.store.interface import IStore
 
 
-@dataclass
-class MongoStore(BaseStore, IStore):
-    collection: User = User()
+class MongoStore(BaseStore):
+    def __init__(self, collection: UserModel):
+        self.collection = collection
