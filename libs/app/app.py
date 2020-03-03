@@ -17,6 +17,7 @@ class App(BaseApp):
         self.app.run(
             host=self.app.config.get('HOST'),
             port=self.app.config.get('PORT'),
+            workers=1,
             debug=self.app.config.get('DEBUG'),
             access_log=self.app.config.get('ACCESS_LOG'),
         )

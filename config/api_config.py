@@ -11,7 +11,7 @@ class ApiConfig:
 
     MODE_PROD = True if os.environ.get('MODE') == 'prod' else False
     HOST = os.environ.get('HOST')
-    PORT = os.environ.get('PORT')
+    PORT = int(os.environ.get('PORT'))
     DEBUG = True if os.environ.get('DEBUG') == 'True' else False
     ACCESS_LOG = True if os.environ.get('ACCESS_LOG') == 'True' else False
     LOGO = None if os.environ.get('LOGO') == 'None' else os.environ.get('LOGO')
