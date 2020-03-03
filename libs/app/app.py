@@ -15,11 +15,11 @@ class App(BaseApp):
         """
         self.create_app()
         self.app.run(
-            host=self.app.config.get('HOST'),
-            port=self.app.config.get('PORT'),
+            host=self.app.config.get("HOST"),
+            port=self.app.config.get("PORT"),
             workers=self.app.config.get("WORKERS"),
-            debug=self.app.config.get('DEBUG'),
-            access_log=self.app.config.get('ACCESS_LOG'),
+            debug=self.app.config.get("DEBUG"),
+            access_log=self.app.config.get("ACCESS_LOG"),
         )
 
     def create_app(self) -> None:
@@ -27,7 +27,7 @@ class App(BaseApp):
         Method for creating instance of app
         """
         # Init application for user
-        app = self.init_app('user')
+        app = self.init_app("user")
 
         # Load the settings
         app = self.add_config(app)
