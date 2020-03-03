@@ -9,6 +9,7 @@ from sanic_openapi import doc
 
 from api.models.user import UserModel
 from api.definitions.user import UserDefinition
+from api.schemas.user import UserSchema
 
 
 class UserResource(HTTPMethodView):
@@ -20,11 +21,6 @@ class UserResource(HTTPMethodView):
         """
         Resource for get all users
         """
-        cur = await UserModel.find(sort='name')
-        list_users = []
-        for obj in cur.objects:
-            dict_user = {}
-            for key in ['name', 'email', 'phone']:
-                dict_user.update({key: getattr(obj, key)})
-            list_users.append(dict_user)
-        return json(list_users)
+        schema = UserSchema(many=True)
+        users = await UserModel.find(sort='name')
+        return json(schema.dump(users.objects))
