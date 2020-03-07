@@ -9,7 +9,7 @@ from typing import Any
 class BaseStore:
     collection: None
 
-    def find(self) -> None:
+    def find_all(self) -> None:
         """
         Base method for finding all elements of collection
         """

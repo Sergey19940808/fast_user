@@ -19,7 +19,7 @@ class BaseApp:
         """
         Base method for a initialization of app
         """
-        return Sanic(name_app, log_config=LogConfig.LOGGING) if ApiConfig.MODE_PROD else Sanic('user')
+        return Sanic(name_app, log_config=LogConfig.LOGGING) if ApiConfig.MODE_PROD else Sanic("user")
 
     @staticmethod
     def add_config(app: Sanic) -> Sanic:

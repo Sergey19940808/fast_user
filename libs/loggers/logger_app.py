@@ -1,3 +1,3 @@
 from logging import getLogger
 
-logger = getLogger('sanic.root')
+logger = getLogger("sanic.root")

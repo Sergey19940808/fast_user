@@ -1,14 +1,17 @@
+"""
+This module for declaration setup package
+"""
 from setuptools import setup
 
 setup(
-    name='cli_commands',
-    version='0.1',
-    py_modules=['filled_data'],
+    name="cli_commands",
+    version="0.1",
+    py_modules=["filled_data"],
     install_requires=[
-        'Click',
+        "Click",
     ],
-    entry_points='''
+    entry_points="""
         [console_scripts]
         filled_data=filled_data:filled_user_store
-    ''',
+    """,
 )

@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_DATABASE
     volumes:
       - mongo-db:/data/db
-      - ./scripts/scripts_set_db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./scripts/scripts_set_db/set_db.sh:/docker-entrypoint-initdb.d/set_db.sh:ro
     restart: always
 
 

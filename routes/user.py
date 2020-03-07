@@ -22,4 +22,4 @@ class Route:
         """
         Method for adding routes
         """
-        app.add_route(UserResource.as_view(), '/')
+        app.add_route(UserResource.as_view(), "/")
