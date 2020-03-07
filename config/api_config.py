@@ -14,10 +14,10 @@ class ApiConfig:
     PORT = int(os.environ.get('PORT'))
     DEBUG = True if os.environ.get('DEBUG') == 'True' else False
     ACCESS_LOG = True if os.environ.get('ACCESS_LOG') == 'True' else False
-    LOGO = None if os.environ.get('LOGO') == 'None' else os.environ.get('LOGO')
     WORKERS = int(os.environ.get('WORKERS'))
 
-    MOTOR_URI = os.environ.get('MONGODB_URI')
+    LOGO = None if os.environ.get('LOGO') == 'None' else os.environ.get('LOGO')
+    MOTOR_URI = os.environ.get('MOTOR_URI')
 
     API_HOST = os.environ.get('API_HOST')
     API_TITLE = os.environ.get('API_TITLE')
