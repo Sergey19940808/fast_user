@@ -1,6 +1,3 @@
-"""
-This module for declaration config api
-"""
 import os
 import dotenv
 

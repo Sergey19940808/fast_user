@@ -1,6 +1,4 @@
-"""
-This module for declaration routes
-"""
+
 from typing import Any
 
 from sanic import Sanic

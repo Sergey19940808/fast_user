@@ -1,6 +1,3 @@
-"""
-This module for declaration config logging
-"""
 from config.api_config import ApiConfig
 
 

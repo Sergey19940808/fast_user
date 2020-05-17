@@ -12,6 +12,7 @@ sanic-motor = "0.3.4"
 sanic-openapi = "0.6.0"
 click = "7.0"
 marshmallow = "3.3.0"
+isort = "4.3.21"
 
 [tool.poetry.dev-dependencies]
 

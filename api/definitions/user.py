@@ -1,6 +1,3 @@
-"""
-This module for declaration definitions
-"""
 from sanic_openapi import doc
 
 

@@ -1,6 +1,3 @@
-"""
-This module for declaration models
-"""
 from sanic_motor import BaseModel
 
 

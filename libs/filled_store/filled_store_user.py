@@ -1,15 +1,12 @@
-"""
-This module for declaration of class FilledStoreUser
-"""
 import uuid
 
 from api.models.user import UserModel
 from libs.filled_store.base import BaseFilledStore
-from libs.store.mongo import MongoStore
+from libs.store.mongo import UserStore
 
 
 class FilledStoreUser(BaseFilledStore):
-    def __init__(self, store: MongoStore, cnt_user: int = 1000):
+    def __init__(self, store: UserStore, cnt_user: int = 1000):
         self.store = store
         self.cnt_user = cnt_user
 
@@ -29,6 +26,6 @@ class FilledStoreUser(BaseFilledStore):
 
 if __name__ == "__main__":
     filled_store_user = FilledStoreUser(
-       MongoStore(UserModel)
+       UserStore(UserModel)
     )
     filled_store_user.filled()

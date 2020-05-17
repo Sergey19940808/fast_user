@@ -1,6 +1,3 @@
-"""
-This module for declaration resources
-"""
 from sanic.request import Request
 from sanic.views import HTTPMethodView
 from sanic.response import json, HTTPResponse

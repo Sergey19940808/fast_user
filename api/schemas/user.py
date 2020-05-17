@@ -1,6 +1,3 @@
-"""
-This module for declaration resources
-"""
 from marshmallow import Schema, fields
 
 

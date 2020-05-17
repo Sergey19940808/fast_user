@@ -1,9 +1,6 @@
-"""
-This module for declaration a class App
-"""
 from sanic import Sanic
 
-from libs.app.base import BaseApp
+from core.base import BaseApp
 
 
 class App(BaseApp):
