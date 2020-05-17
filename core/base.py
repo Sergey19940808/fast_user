@@ -1,17 +1,18 @@
+from dataclasses import dataclass
+from typing import Any
+
 from sanic_motor import BaseModel
 from sanic_openapi import swagger_blueprint
 
-import sys
-
-from config.log_config import LogConfig
 from sanic import Sanic
 
 from routes.user import Route
 from config.api_config import ApiConfig
+from config.log_config import LogConfig
 
-
+@dataclass
 class BaseApp:
-    app: None
+    app: Any
 
     @staticmethod
     def init_app(name_app: str) -> Sanic:

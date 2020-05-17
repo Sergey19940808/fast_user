@@ -2,7 +2,9 @@ version: "3.6"
 services:
   fast_user_api:
     build: .
-    command: bash -c "sh /code/scripts/scripts_set_app/setup_app.sh && python /code/core/server.py"
+    command: bash -c "sh /code/scripts/scripts_set_app/setup_app.sh &&
+                      # python /code/cli_commands/commands/filled_store &&
+                      python /code/core/server.py"
     env_file:
       - .env
     container_name: fast_user_api

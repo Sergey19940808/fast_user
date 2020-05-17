@@ -6,7 +6,7 @@ from sanic_motor import BaseModel
 
 @dataclass
 class BaseStore:
-    collection: BaseModel
+    collection: Any
 
     def find_all(self) -> Coroutine:
         """
@@ -26,7 +26,7 @@ class BaseStore:
         """
         return self.collection.insert_one(obj)
 
-    def insert_many(self, objs: [Dict]) -> Coroutine:
+    def insert_many(self, objs: [Any]) -> Coroutine:
         """
         Base method for inserting of many document
         """

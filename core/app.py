@@ -1,8 +1,11 @@
+from dataclasses import dataclass
+
 from sanic import Sanic
 
 from core.base import BaseApp
 
 
+@dataclass
 class App(BaseApp):
     app: Sanic = None
 
