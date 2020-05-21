@@ -1,16 +1,19 @@
 import uuid
 
-from api.models.user import UserModel
+from asyncio import new_event_loop, set_event_loop, ensure_future
+from typing import Coroutine
+
+from libs.clients.mongo import MongoClient
 from libs.filled_store.base import BaseFilledStore
-from libs.store.mongo import UserStore
+from libs.store.user import UserStore
 
 
 class FilledStoreUser(BaseFilledStore):
-    def __init__(self, store: UserStore, cnt_user: int = 1000):
+    def __init__(self, store: UserStore, cnt_user: int = 10000):
         self.store = store
         self.cnt_user = cnt_user
 
-    def filled(self) -> None:
+    async def filled(self) -> Coroutine:
         """
         Method for filling store collections user
         """
@@ -21,11 +24,18 @@ class FilledStoreUser(BaseFilledStore):
                 email=f"sergey_{str(uuid.uuid4())}@mail.ru",
                 phone=f"88000000000"
             ))
-        self.store.insert_many(users)
+        return await self.store.insert_many(users)
 
 
 if __name__ == "__main__":
+    loop = new_event_loop()
+    set_event_loop(loop)
     filled_store_user = FilledStoreUser(
-       UserStore(UserModel)
+        UserStore(
+            "users",
+            MongoClient(loop)()
+        ),
+        10000
     )
-    filled_store_user.filled()
+    future_filled_store_user = ensure_future(filled_store_user.filled())
+    loop.run_until_complete(future_filled_store_user)

@@ -1,33 +1,33 @@
-from dataclasses import dataclass
-from typing import Any, Coroutine, Dict
+from typing import Any, Coroutine, List, Dict
 
-from sanic_motor import BaseModel
+from motor.motor_asyncio import AsyncIOMotorClient
 
 
-@dataclass
 class BaseStore:
-    collection: Any
+    def __init__(self, collection: str, client: AsyncIOMotorClient):
+        self.collection = collection
+        self.db = client.get_database()
 
-    def find_all(self) -> Coroutine:
+    async def find_all(self) -> Coroutine:
         """
         Base method for finding all elements of collection
         """
-        return self.collection.find()
+        return await getattr(self.db, self.collection).find()
 
-    def find_one(self, **kwargs) -> Coroutine:
+    async def find_one(self, **kw) -> Coroutine:
         """
         Base method for finding single element of collection
         """
-        return self.collection.find_one(**kwargs)
+        return await getattr(self.db, self.collection).find_one(**kw)
 
-    def insert_one(self, obj: Any) -> Coroutine:
+    async def insert_one(self, item: Dict) -> Coroutine:
         """
         Base method for inserting of one document
         """
-        return self.collection.insert_one(obj)
+        return await getattr(self.db, self.collection).insert_one(item)
 
-    def insert_many(self, objs: [Any]) -> Coroutine:
+    async def insert_many(self, items: List[Dict]) -> Coroutine:
         """
         Base method for inserting of many document
         """
-        return self.collection.insert_many(objs)
+        return await getattr(self.db, self.collection).insert_many(items)
