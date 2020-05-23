@@ -3,9 +3,9 @@ import uuid
 from asyncio import new_event_loop, set_event_loop, ensure_future
 from typing import Coroutine
 
-from libs.clients.mongo import MongoClient
-from libs.filled_store.base import BaseFilledStore
-from libs.store.user import UserStore
+from clients import MongoClient
+from filled_store.base import BaseFilledStore
+from store.user import UserStore
 
 
 class FilledStoreUser(BaseFilledStore):
@@ -35,7 +35,6 @@ if __name__ == "__main__":
             "users",
             MongoClient(loop)()
         ),
-        10000
     )
     future_filled_store_user = ensure_future(filled_store_user.filled())
     loop.run_until_complete(future_filled_store_user)

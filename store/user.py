@@ -1,4 +1,4 @@
-from libs.store.base import BaseStore
+from store.base import BaseStore
 
 
 class UserStore(BaseStore):
